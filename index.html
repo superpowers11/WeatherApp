@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic/js/angular/angular-resource.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <!-- <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script> -->
+  </head>
+  <body class="item-calm" ng-app="weather">
+      <ion-header> 
+        <ion-navbar class="bar bar-energized">
+<!--           <ion-nav-buttons side="left"><button menu-toggle="left" class="button button-icon icon ion-navicon"></button></ion-nav-buttons> -->
+            <h1 class="title">Current Weather in Wenham, MA</h1>
+        </ion-navbar>
+      </ion-header>
+      <ion-content ng-controller="MainCtrl" scroll="false">
+        <div class="text-center main-content">
+          <script>console.log("today")</script>
+          <!-- Try to get weather icons working -->
+          <p>Temperature: {{current.currently.temperature}} °F</p>
+          <p>Feels like: {{current.currently.apparentTemperature}} °F</p>
+          <p>Humidity: {{current.currently.humidity}}%</p>
+          <p>Chance of rain: {{current.currently.precipProbability}}%</p>
+        </div>
+        <button class="button button-block button-positive">Hourly Forecast</button>
+        <!-- **Note that time is in UNIX time ( since midnight GMT on 1 Jan 1970), so I'll have to calculate that to get time and date -->
+        <div class="text-center">
+          <div>+1 Hour: {{current.hourly.data[0].temperature}} °F</div>
+          <div>+2 Hours: {{current.hourly.data[1].temperature}} °F</div>
+          <div>+3 Hours: {{current.hourly.data[2].temperature}} °F</div>
+          <div>+4 Hours: {{current.hourly.data[3].temperature}} °F</div>
+        </div>
+        <button class="button button-block button-positive">Daily Forecast</button>
+        <div class="text-center">
+          <div class="daily-forecast">Tomorrow: H {{current.daily.data[0].temperatureMax}} °F, L {{current.daily.data[0].temperatureMin}} °F</div>
+          <div class="daily-forecast">+2 Days : {{current.daily.data[1].temperatureMax}} °F, L {{current.daily.data[1].temperatureMin}} °F</div>
+          <div class="daily-forecast">+3 Days : {{current.daily.data[2].temperatureMax}} °F, L {{current.daily.data[2].temperatureMin}} °F</div>
+          <div class="daily-forecast">+4 Days : {{current.daily.data[3].temperatureMax}} °F, L {{current.daily.data[3].temperatureMin}} °F</div>
+          <div class="daily-forecast">+5 Days : {{current.daily.data[4].temperatureMax}} °F, L {{current.daily.data[4].temperatureMin}} °F</div>
+          <div class="daily-forecast">+6 Days : {{current.daily.data[5].temperatureMax}} °F, L {{current.daily.data[5].temperatureMin}} °F</div>
+          <div class="daily-forecast">+7 Days : {{current.daily.data[6].temperatureMax}} °F, L {{current.daily.data[6].temperatureMin}} °F</div>
+        </div>
+      </ion-content>
+<!--       <ion-side-menus enable-menu-with-back-views="true">
+        <ion-side-menu side="left">
+          <ul>
+          <li>Hourly Weather</li>
+          <li>Daily Weather</li>
+          <li>Top Weather News</li>
+          </ul>
+        </ion-side-menu>
+        </ion-side-menus> -->
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+<!--     <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar> -->
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+   <!--  <ion-nav-view></ion-nav-view> -->
+  </body>
+</html>
